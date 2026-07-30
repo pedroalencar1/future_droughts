@@ -1,0 +1,36 @@
+# Default policy: ignore everything, then explicitly include what we want
+*
+
+# Keep directory traversal so include rules below can work
+!*/
+
+# Keep repository metadata/docs
+!.gitignore
+!README.md
+
+# Keep all R scripts (root and subfolders)
+!*.r
+
+# Keep all outputs and artifacts under files/
+!files/
+!files/**
+
+# Never sync datasets under data/
+data/
+data/**
+
+# Conventional system/editor artifacts
+.DS_Store
+Thumbs.db
+ehthumbs.db
+.AppleDouble
+.LSOverride
+Icon?
+
+# R/session/editor artifacts
+.Rhistory
+.RData
+.Rproj.user/
+*.swp
+*~
+.vscode/
