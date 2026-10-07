@@ -115,8 +115,7 @@ eto_pixel <- function(tas, rsds, hurs, sfcw, rsds_in_w = TRUE){
         # cat('a')
     }
 
-   eto <- (0.408 * delta * rsds + gamma * (900 / (tas + 273)) * sfcw * e_s * (1 - hurs)) / (delta + gamma * (1 + 0.34 * sfcw))
-
+9
    return(eto)
 }
 
@@ -136,7 +135,7 @@ pet_pixel <- function(tas, rsds, hurs, sfcw, rsds_in_w = TRUE){
     # rsds_in_w = TRUE
 
     e_s <- 0.6108 * exp((17.27 * tas) / (tas + 237.3))
-    delta <- (4098 * e_s) / ((tas + 237.3)^2)
+    delta <- (4098 * e_s) / ((tas + 237.3)^2)jju
     gamma <- 0.0668 # psychometric constant in kPa °C-1 for 101.3 kPa (sea level)
 
     if (rsds_in_w) {
@@ -479,3 +478,12 @@ fut_eto <- compute_et(tas = fut_temp, rsds = fut_rsds, wind = fut_sfcw, hurs = f
 fut_spei <- compute_spei(tp = fut_pr, pev = fut_eto, param = ref_params)
 
 
+
+
+
+#%% test ----------
+
+rr <- rast('/Users/alencar/Library/CloudStorage/OneDrive-Personal/@KIRecover/@R/Copula/files/ecmwf/spei/new_spei_CAS_FGOALS-g3_370.nc')
+
+# if value > -1, 0
+rr[rr > -1] <- 0
